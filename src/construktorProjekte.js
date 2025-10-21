@@ -3,8 +3,4 @@ export class projekt {
         this.titel = titel
         this.aufgaben = aufgaben
     }
-
-    aufgabenHinzufügen(aufgabe){
-        this.aufgaben.push(aufgabe);
-    };
 }
