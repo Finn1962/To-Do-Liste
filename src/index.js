@@ -1,12 +1,21 @@
 import "./styles.css";
-import {neueProjekteUndAufgabenErstellen} from "./Erstellen&HinzufügenVonProjekten&Augaben"
+import {projekteUndAufgabenErstellen} from "./projekteUndAufgabenErstellen"
+import {nachWichtigkeitSortieren} from "./nutzerProjekteSortieren"
+
 
 window.addEventListener("keydown", (event)=> {
     if (event.key != "p") return;
-    neueProjekteUndAufgabenErstellen.neuesProjekt();
+    projekteUndAufgabenErstellen.neuesProjekt();
 });
 
 window.addEventListener("keydown", (event)=> {
     if (event.key != "a") return;
-    neueProjekteUndAufgabenErstellen.neueAufgabe();
+    projekteUndAufgabenErstellen.neueAufgabe();
+    nachWichtigkeitSortieren();
+});
+
+window.addEventListener("DOMContentLoaded", ()=> {
+    projekteUndAufgabenErstellen.beispielprojekt();
+    nachWichtigkeitSortieren();
+    projekteUndAufgabenErstellen.nutzerProjekteAusgeben();
 });
