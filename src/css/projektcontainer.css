@@ -1,0 +1,91 @@
+#projektcontainer{
+    width: 400px;
+    height: 100%;
+    background-color: var(--mainColor1);  
+    position: absolute;  
+}
+
+.buttonHinzufügen{
+    display: flex;
+    margin: 100px 0px 20px 50px;
+    user-select: none;
+    width: 200px;
+}
+
+.buttonHinzufügen>svg{
+    width: 30px;
+    color: aliceblue;
+    
+}
+
+.buttonHinzufügen>p{
+    color: var(--mainColor2);
+    margin-left: 10px;
+    font-size: 20px;
+    transition: font-size 0.5s ease;
+}
+
+.buttonHinzufügen:hover > p {
+    color: var(--mainColorHover);
+    font-size: 25px;
+}
+
+.buttonHinzufügen:hover > svg .st0{
+    fill: var(--mainColorHover);
+}
+
+.projekteUndÜberschrift{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.projekteUndÜberschrift>p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 1px; 
+    text-decoration-color: var(--mainColor3);
+}
+
+.projektContainer{
+    display: flex;
+    align-items: start;
+}
+
+.projektContainer>p {
+    margin-left: 40px;
+    font-size: 20px;
+    font-weight: lighter;
+    transition: margin-left 0.5s ease, margin-bottom 0.5s ease, text-decoration-thickness 0.5s ease, text-underline-offset 0.5s ease;
+}
+
+.projektContainer:hover>p{
+    margin-left: 20px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 1px; 
+}
+
+.projektContainer>img{
+    margin-top: 25px;
+    margin-left: 10px; 
+    opacity: 0;  
+    visibility: hidden;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+.projektContainer:hover>img{
+    visibility: visible;
+    opacity: 100;
+}
+
+.projektContainer>img:hover{
+    width: 20px;
+}
+
+
+

@@ -1,11 +1,12 @@
-import "./styles.css";
+import "./css/basis.css"
+import "./css/projektcontainer.css";
 import {projekteUndAufgabenErstellen} from "./projekteUndAufgabenErstellen"
 import {nachWichtigkeitSortieren} from "./nutzerProjekteSortieren"
+import {domManipulation} from "./domManipulation"
 
-
-window.addEventListener("keydown", (event)=> {
-    if (event.key != "p") return;
+document.getElementById("buttonHinzufügen").addEventListener("click", ()=> {
     projekteUndAufgabenErstellen.neuesProjekt();
+    domManipulation.projekteInDomÜbernehmen();
 });
 
 window.addEventListener("keydown", (event)=> {
@@ -18,4 +19,6 @@ window.addEventListener("DOMContentLoaded", ()=> {
     projekteUndAufgabenErstellen.beispielprojekt();
     nachWichtigkeitSortieren();
     projekteUndAufgabenErstellen.nutzerProjekteAusgeben();
+    domManipulation.projekteInDomÜbernehmen();
+
 });

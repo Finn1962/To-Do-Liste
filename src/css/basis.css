@@ -1,0 +1,13 @@
+:root{
+    --mainColor1: #dcdcdc;
+    --mainColor2: #c6111a;
+    --mainColor3: #afafaf;
+    --mainColorHover: #000000;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
