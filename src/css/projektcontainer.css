@@ -34,16 +34,17 @@
     fill: var(--mainColorHover);
 }
 
-.projekteUndÜberschrift{
+.projekteBereich{
     margin-top: 50px;
     margin-left: 50px;
 }
 
-.projekteUndÜberschrift>p{
+#projektcontainer>p{
     font-size: 20px;
     font-weight: bold;
-    margin-left: 20px;
-    margin-bottom: 50px;
+    margin-top: 45px;
+    margin-left: 60px;
+    margin-bottom: 40px;
     text-decoration: underline;
     text-underline-offset: 10px;
     text-decoration-thickness: 1px; 
