@@ -1,0 +1,71 @@
+#aufgabencontainer{
+    padding: 100px 10% 50px 5%;
+    width: 100%;
+}
+
+#aufgabencontainer>p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    text-decoration-thickness: 1px; 
+    text-decoration-color: var(--mainColor3);
+}
+
+.aufgabe{
+    width: 100%;
+}
+
+.container1{
+    display: flex;
+    justify-content: end;
+}
+
+.container1>img{
+    margin-left: 10px;
+    transition: width 0.5s ease;
+}
+
+.container1>img:hover{
+    width: var(--vergrößerungIcons);
+}
+
+.container2{
+   display: flex;
+   justify-content: space-between;
+}
+
+.container2>div>img{
+    margin-right: 15px;
+    
+}
+
+.trennbalken{
+    width: 1px;
+    height: 60px;
+    margin-top: 5px;
+    background-color: var(--mainColor3);
+}
+
+.datum{
+    margin: 0px;
+    transform: translateY(-20%);
+}
+
+.aufgabe>p{
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.container3{
+    display: flex;
+    justify-content: space-around;
+}
+
+.aufgabe>hr{
+    color: var(--mainColor3);
+    margin: 3px;
+}

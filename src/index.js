@@ -1,5 +1,6 @@
 import "./css/basis.css"
 import "./css/projektcontainer.css";
+import "./css/aufgabenContainer.css"
 import {projekteUndAufgabenErstellen} from "./projekteUndAufgabenErstellen"
 import {nachWichtigkeitSortieren} from "./nutzerProjekteSortieren"
 import {domManipulation} from "./domManipulation"

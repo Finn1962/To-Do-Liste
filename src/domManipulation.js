@@ -13,7 +13,7 @@ export class domManipulation {
             for (let i = 0; i<nutzerProjekte.length; i++) {
                 const titel = nutzerProjekte[i].titel;
                 const htmlCodeProjekte =             
-                    `<div class="projektContainer">
+                    `<div class="projekt">
                         <p>${titel}</p>
                         <img src="${iconBearbeiten}" width="15px">
                         <img src="${iconLöschen}" width="15px">
