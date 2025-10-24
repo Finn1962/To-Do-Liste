@@ -1,0 +1,58 @@
+header{
+    width: calc(100% - 330px);
+    height: 100px;
+    position: fixed;
+    right: 0;
+    z-index: 1;
+    background-color: white;
+    box-sizing: border-box; 
+    padding: 0 5% 0 5%;  
+}
+
+.textUndButton{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.textUndButton>p{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    text-decoration-color: var(--mainColor1);
+}
+
+.textUndButton>div{
+    transform: translateY(5px);
+    display: flex;
+    justify-content: space-between;
+    transition: margin 0.5s ease;
+}
+
+.textUndButton>div:hover{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.textUndButton>div>p{
+    color: var(--mainColor2);
+    margin: 0px;
+    user-select: none;
+    transition: font-size 0.5s ease;
+    align-self: center;
+}
+
+.textUndButton>div:hover>p{
+    font-size: 25px;
+    color: var(--mainColorHover)
+}
+
+.textUndButton>div>svg{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.textUndButton>div:hover>svg .st0{
+    fill: var(--mainColorHover);
+}

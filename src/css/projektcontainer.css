@@ -11,24 +11,36 @@
 }
 
 #projektcontainer:hover{
-    width: 33%;
+    width: 400px;
 }
 
 #projektcontainerplatzhalter{
     margin-right: 330px;
 }
+
+#projektcontainer>img{
+    width: 150px;
+    margin-left: 50%;
+    margin-top: 30px;
+    transform: translateX(-50%);
+    transition: width 0.5s ease, margin 0.5s ease;
+}
+
+#projektcontainer:hover>img{
+    width: 200px;
+    margin-bottom: 10px;
+}
  
 .buttonHinzufügen{
     display: flex;
-    margin: 100px 0px 20px 50px;
+    margin: 40px 0px 20px 50px;
     user-select: none;
     width: 230px;
 }
 
 .buttonHinzufügen>svg{
     width: 30px;
-    color: aliceblue;
-    
+    color: aliceblue;  
 }
 
 .buttonHinzufügen>p{

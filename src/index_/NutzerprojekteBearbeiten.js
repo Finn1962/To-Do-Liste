@@ -20,21 +20,22 @@ export class nutzerProjekteBearbeiten {
         nutzerProjekte[indexProjekt].titel = eingabefeld.value;
     }
 
-    static neueAufgabe(){
-        const titelProjekt = prompt("Projekt für die Aufgabe auswählen");
-        const titel = prompt("Titel von neuer Aufgabe eingeben");
-        const beschreibung = prompt("Beschreibung von neuer Aufgabe eingeben");
-        const endtermin = {datum: prompt("Datum von Endtermin eingeben"), uhrzeit: prompt("Uhrzeit von Endtermin eingeben")};
-        const priorität = prompt("priorität von neuer Aufgabe eingeben");
-        const zwischenschritte = [];
-        let zwischenschritt;
+    static neueAufgabe(titelProjekt){
+        const Projekttitel = titelProjekt;
+        const titel = document.getElementById("titel").value;
+        const beschreibung = document.getElementById("beschreibung").value;
+        const endtermin = {datum: document.getElementById("datum").value, uhrzeit: document.getElementById("uhrzeit").value};
+        const priorität = document.getElementById("priorität").value;
+        const zwischenschritte = [document.getElementById("zwischenschritte").value];
+        /*let zwischenschritt;
         while (true) {
             zwischenschritt = {titel: prompt("Zwischenschritte von neuer Aufgabe eingeben"), erledigt: false};
             if (zwischenschritt.titel == "") break;
             zwischenschritte.push(zwischenschritt);
-        }
+        }*/
         const neueAufgabe = new aufgabe(titel, beschreibung, endtermin, priorität, zwischenschritte);
-        const indexProjekt = nutzerProjekte.findIndex(p => p.titel == titelProjekt);
+        console.log(neueAufgabe)
+        const indexProjekt = nutzerProjekte.findIndex(p => p.titel == Projekttitel);
         nutzerProjekte[indexProjekt].aufgaben.push(neueAufgabe)
     }
 
@@ -52,11 +53,11 @@ export class nutzerProjekteBearbeiten {
     static beispielprojektErstellen(){
         const neuesProjekt = new projekt("Mein Projekt");
         nutzerProjekte.push(neuesProjekt);
-        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "mittel", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "mittel", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_1);
-        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich erstelle eine zweite Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "niedrig", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich erstelle eine zweite Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "niedrig", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_2);
-        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "hoch", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "hoch", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_3);
     }
 

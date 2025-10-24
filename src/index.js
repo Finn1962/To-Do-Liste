@@ -5,14 +5,21 @@ import "./css/eingabeContainerProjekte.css"
 import "./css/overlay.css"
 import "./css/eingabeContainerLöschenÜberprüfung.css"
 import "./css/eingabeContainerAufgaben.css"
+import "./css/header.css"
 import {nutzerProjekteBearbeiten} from "./index_/nutzerprojekteBearbeiten"
 import {eingabeContainerAnzeigen} from "./index_/eingabeContainerAnzeigen"
 import {domManipulation} from "./index_/domManipulation"
 
 let titelProjekt;
 let titelAufgabe;
+let aktivesProjekt;
 
 
+//Eventlistener zum anzeigen von Projektaufgaben
+document.addEventListener("buttonAufgabenAnzeigenGeklickt", (event)=> {
+    domManipulation.aufgabenInDomÜbernehmen(event.detail)
+    aktivesProjekt = event.detail;
+});
 
 //Eventlistener Eingabefläche Projekte//////////////////////////////////////////////
 
@@ -34,7 +41,6 @@ document.getElementById("projektAbbrechenBtn").addEventListener("click", ()=> {
 });
 
 
-
 //Projekte Bearbeiten//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Bearbeiten Anzeigen
@@ -49,7 +55,6 @@ document.getElementById("projektÜbernehmenBtn").addEventListener("click", () =>
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
     domManipulation.projekteInDomÜbernehmen();
 });
-
 
 
 //Projekte Löschen//////////////////////////////////////////////
@@ -83,7 +88,10 @@ document.getElementById("buttonAufgabenHinzufügen").addEventListener("click", (
 
 //Neue Aufgabe erstellen bei click auf Button
 document.getElementById("aufgabenSpeichernBtn").addEventListener("click", ()=>{
-    
+    nutzerProjekteBearbeiten.neueAufgabe(aktivesProjekt);
+    nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
+    domManipulation.aufgabenInDomÜbernehmen(aktivesProjekt);
+    eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
 });
 
 //Eingabefläche verbergen bei click auf Abbrechenbutton
@@ -91,11 +99,16 @@ document.getElementById("aufgabenAbbrechenBtn").addEventListener("click", ()=>{
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
 });
 
+
+//Aufgaben Bearbeiten//////////////////////////////////////////////
+
 //Eingabefläche Eingabefläche für Aufgaben bearbeiten Anzeigen
 document.addEventListener("buttonAufgabeBearbeitenGeklickt", (event) => {
     console.log(event.detail);
     titelAufgabe = event.detail;
 });
+
+//Aufgaben Löschen//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Aufgaben löschenüberprüfung Anzeigen
 document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {

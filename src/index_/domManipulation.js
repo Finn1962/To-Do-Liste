@@ -16,7 +16,13 @@ export class domManipulation {
             div.className = "projekt";
             const text = document.createElement("p");
             text.textContent = nutzerProjekte[i].titel;
-            text.addEventListener("click", () => domManipulation.aufgabenInDomÜbernehmen(nutzerProjekte[i].titel));
+            text.addEventListener("click", () => {
+                const signalAnzeigen = new CustomEvent("buttonAufgabenAnzeigenGeklickt", {
+                    detail: nutzerProjekte[i].titel,
+                    bubbles: true,
+                });  
+                document.dispatchEvent(signalAnzeigen); 
+            });
             div.appendChild(text);
             const bearbeitenButton = document.createElement("img");
             bearbeitenButton.src = iconBearbeiten;
