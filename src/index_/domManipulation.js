@@ -22,7 +22,7 @@ export class domManipulation {
             bearbeitenButton.src = iconBearbeiten;
             bearbeitenButton.width = "15";
             bearbeitenButton.addEventListener("click", () => {
-                const signalbearbeiten = new CustomEvent("buttonBearbeitenGeklickt", {
+                const signalbearbeiten = new CustomEvent("buttonProjektBearbeitenGeklickt", {
                     detail: nutzerProjekte[i].titel,
                     bubbles: true,
                 });  
@@ -33,7 +33,7 @@ export class domManipulation {
             löschenButton.src = iconLöschen;
             löschenButton.width = "15";
             löschenButton.addEventListener("click", () => {
-                const signalLöschen = new CustomEvent("buttonLöschenGeklickt", {
+                const signalLöschen = new CustomEvent("buttonProjektLöschenGeklickt", {
                     detail: nutzerProjekte[i].titel,
                     bubbles: true,
                 });
@@ -48,41 +48,40 @@ export class domManipulation {
         const ausgewählterHTMLBereich = document.getElementById("aufgabenBereich");
         ausgewählterHTMLBereich.innerHTML = "";
         const projekt = nutzerProjekte.find(p => p.titel == projekttitel);
-
+        
         for (let i = 0; i < projekt.aufgaben.length; i++) {
+            
             document.getElementById("text").textContent = "Aufgaben";
-            ausgewählterHTMLBereich.innerHTML += `            
-                <div class="aufgabe" id="aufgabe">
-                    
-                    <div class="container1">
-                        <img src="${iconBearbeiten}" width="15px">
-                        <img src="${iconLöschen}" width="15px">
+            //Aufgabencode in HTML einfügen
+            const aufgabenDiv = document.createElement("div");
+            aufgabenDiv.className = "aufgabe"
+            aufgabenDiv.id = `aufgabe${i}`
+            aufgabenDiv.innerHTML = `            
+                <div class="container2">
+                    <div style="display: flex;">
+                        <img src="${iconNichtAbgeschlossen}" width="25px">
+                        <p>${projekt.aufgaben[i].titel}</p>
                     </div>
-                    
-                    <div class="container2">
-                        <div style="display: flex;">
-                            <img src="${iconNichtAbgeschlossen}" width="25px">
-                            <p>${projekt.aufgaben[i].titel}</p>
-                        </div>
-                        <div class="trennbalken"></div>
-                        <p>Priorität: ${projekt.aufgaben[i].priorität}</p>
-                        <div class="trennbalken"></div>
-                        <div style="display: flex; flex-direction: column; justify-content: end;">
-                            <p class="datum">${projekt.aufgaben[i].endtermin.datum}</p>
-                            <p class="datum" style="text-align: right;">${projekt.aufgaben[i].endtermin.uhrzeit}</p>
-                        </div>
+                    <div class="trennbalken"></div>
+                    <p>Priorität: ${projekt.aufgaben[i].priorität}</p>
+                    <div class="trennbalken"></div>
+                    <div style="display: flex; flex-direction: column; justify-content: end;">
+                        <p class="datum">${projekt.aufgaben[i].endtermin.datum}</p>
+                        <p class="datum" style="text-align: right;">${projekt.aufgaben[i].endtermin.uhrzeit}</p>
                     </div>
+                </div>
 
-                    <p>${projekt.aufgaben[i].beschreibung}</p>
+                <p>${projekt.aufgaben[i].beschreibung}</p>
 
-                    <div id="${"box"+i}" style="display: flex; justify-content: space-around;">
-                    </div>
+                <div id="${"box"+i}" style="display: flex; justify-content: space-around;">
+                </div>
 
-                    <hr>
-                    <hr>
-                </div>`
+                <hr>
+                <hr>`
             ;
+            ausgewählterHTMLBereich.appendChild(aufgabenDiv);
 
+            //Zwischenschritte Anhängen
             const zwischenschritteBox = document.getElementById("box"+i);
             if (projekt.aufgaben[i].zwischenschritte.length == 0) return;
             for (let j = 0; j < projekt.aufgaben[i].zwischenschritte.length; j++){
@@ -94,6 +93,34 @@ export class domManipulation {
                 ;
                 zwischenschritteBox.innerHTML += htmlCodeZwischenschritte;
             }
+            
+            //Löchen- und Bearbeiten Button Anhängen
+            const div = document.createElement("div");
+            div.className = "container1";
+            const bearbeitenButton = document.createElement("img");
+            bearbeitenButton.src = iconBearbeiten;
+            bearbeitenButton.width = "15";
+            bearbeitenButton.addEventListener("click", () => {
+                const signalBearbeiten = new CustomEvent("buttonAufgabeBearbeitenGeklickt", {
+                    detail: projekt.aufgaben[i].titel,
+                    bubbles: true,
+                });  
+                document.dispatchEvent(signalBearbeiten); 
+            });
+            div.appendChild(bearbeitenButton);
+            const löschenButton = document.createElement("img");
+            löschenButton.src = iconLöschen;
+            löschenButton.width = "15";
+            löschenButton.addEventListener("click", () => {
+                const signalLöschen = new CustomEvent("buttonAufgabeLöschenGeklickt", {
+                    detail: projekt.aufgaben[i].titel,
+                    bubbles: true,
+                });
+                document.dispatchEvent(signalLöschen);
+            });
+            div.appendChild(löschenButton);
+            const aufgabe = document.getElementById(`aufgabe${i}`);
+            aufgabe.prepend(div);   
         }
     }
 }

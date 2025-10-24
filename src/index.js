@@ -4,16 +4,20 @@ import "./css/aufgabenContainer.css"
 import "./css/eingabeContainerProjekte.css"
 import "./css/overlay.css"
 import "./css/eingabeContainerLöschenÜberprüfung.css"
-import {nutzerProjekteBearbeiten} from "./index_/NutzerprojekteBearbeiten"
+import "./css/eingabeContainerAufgaben.css"
+import {nutzerProjekteBearbeiten} from "./index_/nutzerprojekteBearbeiten"
 import {eingabeContainerAnzeigen} from "./index_/eingabeContainerAnzeigen"
 import {domManipulation} from "./index_/domManipulation"
 
 let titelProjekt;
+let titelAufgabe;
+
+
 
 //Eventlistener Eingabefläche Projekte//////////////////////////////////////////////
 
 //Eingabefläche für neues Projekt anzeigen bei click
-document.getElementById("buttonHinzufügen").addEventListener("click", ()=> {
+document.getElementById("buttonProjektHinzufügen").addEventListener("click", ()=> {
     eingabeContainerAnzeigen.projektEingabeContainerAnzeigen();
 });
 
@@ -30,13 +34,16 @@ document.getElementById("projektAbbrechenBtn").addEventListener("click", ()=> {
 });
 
 
+
 //Projekte Bearbeiten//////////////////////////////////////////////
 
-document.addEventListener("buttonBearbeitenGeklickt", (event) => {
+//Eingabefläche Eingabefläche für Bearbeiten Anzeigen
+document.addEventListener("buttonProjektBearbeitenGeklickt", (event) => {
     eingabeContainerAnzeigen.projektBearbeitenContainerAnzeigen(event.detail);
     titelProjekt = event.detail;
 });
 
+//Projekt Bearbeiten bei click auf Übernehmen Button
 document.getElementById("projektÜbernehmenBtn").addEventListener("click", () => {
     nutzerProjekteBearbeiten.projektBearbeiten(titelProjekt);
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
@@ -45,11 +52,10 @@ document.getElementById("projektÜbernehmenBtn").addEventListener("click", () =>
 
 
 
-
 //Projekte Löschen//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Löschenüberprüfung Anzeigen
-document.addEventListener("buttonLöschenGeklickt", (event) => {
+document.addEventListener("buttonProjektLöschenGeklickt", (event) => {
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungAnzeigen()
     titelProjekt = event.detail;
 });
@@ -68,6 +74,34 @@ document.getElementById("neinBtn").addEventListener("click", () => {
 
 
 
+//Eventlistener Eingabefläche Aufgaben//////////////////////////////////////////////
+
+//Eingabefläche Eingabefläche für Aufgaben Anzeigen
+document.getElementById("buttonAufgabenHinzufügen").addEventListener("click", ()=>{
+    eingabeContainerAnzeigen.aufgabenEingabeContainerAnzeigen();
+});
+
+//Neue Aufgabe erstellen bei click auf Button
+document.getElementById("aufgabenSpeichernBtn").addEventListener("click", ()=>{
+    
+});
+
+//Eingabefläche verbergen bei click auf Abbrechenbutton
+document.getElementById("aufgabenAbbrechenBtn").addEventListener("click", ()=>{
+    eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
+});
+
+//Eingabefläche Eingabefläche für Aufgaben bearbeiten Anzeigen
+document.addEventListener("buttonAufgabeBearbeitenGeklickt", (event) => {
+    console.log(event.detail);
+    titelAufgabe = event.detail;
+});
+
+//Eingabefläche Eingabefläche für Aufgaben löschenüberprüfung Anzeigen
+document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
+    console.log(event.detail);
+    titelAufgabe = event.detail;
+});
 
 
 
@@ -75,7 +109,9 @@ document.getElementById("neinBtn").addEventListener("click", () => {
 
 
 
-//Beispielprojekt//////////////////////////////////////////////
+
+
+//Beispielprojekt Laden//////////////////////////////////////////////
 
 //Beispiel projekt erstellen beim Laden der Seite
 document.addEventListener("DOMContentLoaded", ()=> {

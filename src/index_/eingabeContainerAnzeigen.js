@@ -33,6 +33,18 @@ export class eingabeContainerAnzeigen {
         overlay.style.visibility = "visible";        
     }
 
+    static aufgabenEingabeContainerAnzeigen() {
+        const eingabeContainer = document.getElementById("eingabeContainerAufgaben");
+        eingabeContainerAufgaben.style.visibility = "visible"
+        overlay.style.visibility = "visible"; 
+    }
+
+    static aufgabenEingabeContainerVerbergen() {
+        const eingabeContainer = document.getElementById("eingabeContainerAufgaben");
+        eingabeContainerAufgaben.style.visibility = "hidden"
+        overlay.style.visibility = "hidden"; 
+    }
+
     static eingabeContainerLöschenÜberprüfungAnzeigen() {
         const eingabeContainer = document.getElementById("eingabeContainerLöschenÜberprüfung");
         eingabeContainer.style.visibility = "visible";
