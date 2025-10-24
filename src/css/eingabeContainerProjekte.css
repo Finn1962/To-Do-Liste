@@ -1,0 +1,34 @@
+#eingabeContainerProjekte{
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--mainColor1);
+    width: 500px;
+    height: 150px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+}
+
+p{
+    align-self: flex-start;
+    margin-left: 50px;
+}
+
+input{
+    width: 400px;
+}
+
+#eingabeContainerProjekte>div{
+    align-self: start;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 46px;
+}
+
+button{
+    margin-right: 10px;
+}

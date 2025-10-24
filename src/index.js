@@ -1,25 +1,32 @@
 import "./css/basis.css"
 import "./css/projektcontainer.css";
 import "./css/aufgabenContainer.css"
-import {projekteUndAufgabenErstellen} from "./projekteUndAufgabenErstellen"
-import {nachWichtigkeitSortieren} from "./nutzerProjekteSortieren"
-import {domManipulation} from "./domManipulation"
+import "./css/eingabeContainerProjekte.css"
+import "./css/overlay.css"
+import {nutzerProjekteBearbeiten} from "./indexUntermodule/NutzerprojekteBearbeiten"
+import {eingabeContainerAnzeigen} from "./indexUntermodule/eingabeContainerAnzeigen"
 
 document.getElementById("buttonHinzufügen").addEventListener("click", ()=> {
-    projekteUndAufgabenErstellen.neuesProjekt();
-    domManipulation.projekteInDomÜbernehmen();
+    eingabeContainerAnzeigen.projektEingabeContainerAnzeigen();
+});
+
+document.getElementById("projektAbbrechenBtn").addEventListener("click", ()=> {
+    eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
+});
+
+document.getElementById("projektSpeichernBtn").addEventListener("click", ()=> {
+    nutzerProjekteBearbeiten.neuesProjekt();
+    eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
 });
 
 window.addEventListener("keydown", (event)=> {
     if (event.key != "a") return;
-    projekteUndAufgabenErstellen.neueAufgabe();
-    nachWichtigkeitSortieren();
+    nutzerProjekteBearbeiten.neueAufgabe();
+    nutzerProjekteBearbeiten.nachWichtigkeitSortieren();
 });
 
 window.addEventListener("DOMContentLoaded", ()=> {
-    projekteUndAufgabenErstellen.beispielprojekt();
-    nachWichtigkeitSortieren();
-    projekteUndAufgabenErstellen.nutzerProjekteAusgeben();
-    domManipulation.projekteInDomÜbernehmen();
-
+    nutzerProjekteBearbeiten.beispielprojekt();
+    nutzerProjekteBearbeiten.nachWichtigkeitSortieren();
+    nutzerProjekteBearbeiten.nutzerProjekteConsolenAusgabe();
 });

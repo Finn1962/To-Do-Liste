@@ -1,11 +1,23 @@
 #projektcontainer{
-
+    position: fixed;  
     height: 100%;
     background-color: var(--mainColor1);
     padding-right: 50px; 
- 
+    overflow: hidden;
+    width: 330px;
+    box-sizing: border-box;
+    transition: width 0.5s ease;
+    z-index: 1;
 }
 
+#projektcontainer:hover{
+    width: 33%;
+}
+
+#projektcontainerplatzhalter{
+    margin-right: 330px;
+}
+ 
 .buttonHinzufügen{
     display: flex;
     margin: 100px 0px 20px 50px;
@@ -35,15 +47,14 @@
 }
 
 .projekt{
-    margin-top: 15px;
     margin-left: 50px;
 }
 
 #projektcontainer>p{
     font-weight: bold;
-    margin-top: 45px;
+    margin-top: 50px;
     margin-left: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-decoration: underline;
     text-underline-offset: 10px;
     text-decoration-thickness: 1px; 
@@ -56,12 +67,15 @@
 }
 
 .projekt>p {
+    margin-top: 0px;
+    margin-right: 2px;
+    margin-bottom: 25px;
     margin-left: 40px;
     transition: margin-left 0.5s ease, margin-bottom 0.5s ease, text-decoration-thickness 0.5s ease, text-underline-offset 0.5s ease;
 }
 
 .projekt:hover>p{
-    margin-left: 20px;
+    margin-left: 15px;
     margin-bottom: 50px;
     text-decoration: underline;
     text-underline-offset: 10px;
@@ -74,6 +88,7 @@
     margin-left: 10px; 
     opacity: 0;  
     visibility: hidden;
+    transform: translateY(-140%);
     transition: opacity 0.5s ease, width 0.5s ease;
 }
 

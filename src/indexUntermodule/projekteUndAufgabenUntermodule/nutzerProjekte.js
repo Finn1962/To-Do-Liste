@@ -9,7 +9,7 @@ export const nutzerProjekte = [];
 
 //Beispiel Projekt mit aufgabe
 /*
-const projekt{
+const nutzerProjekte[
     titel: "Mein_Projekt",
     aufgaben: [
         {
@@ -29,5 +29,5 @@ const projekt{
         },
 
     ]
-}
+]
 */

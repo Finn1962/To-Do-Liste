@@ -7,20 +7,33 @@
     font-size: 40px;
     font-weight: 300;
     margin-top: 0px;
-    margin-bottom: 50px;
     text-decoration: underline;
     text-underline-offset: 15px;
     text-decoration-thickness: 1px; 
-    text-decoration-color: var(--mainColor3);
+    text-decoration-color: var(--mainColor1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .aufgabe{
+    margin-top: 70px;
     width: 100%;
+    animation: slideUp 0.4s ease-out forwards;
 }
 
 .container1{
     display: flex;
     justify-content: end;
+    margin-bottom: 10px;
 }
 
 .container1>img{
@@ -38,15 +51,15 @@
 }
 
 .container2>div>img{
-    margin-right: 15px;
-    
+    margin-right: 5px;
+    transform: translateY(-3%);
 }
 
 .trennbalken{
     width: 1px;
-    height: 60px;
+    height: 55px;
     margin-top: 5px;
-    background-color: var(--mainColor3);
+    background-color: var(--mainColor1);
 }
 
 .datum{
@@ -60,12 +73,10 @@
     margin-right: 25px;
 }
 
-.container3{
-    display: flex;
-    justify-content: space-around;
-}
-
 .aufgabe>hr{
-    color: var(--mainColor3);
-    margin: 3px;
+    margin: 5px;
+    border: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--mainColor1);
 }
