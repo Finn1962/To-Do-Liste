@@ -24,7 +24,10 @@ export class nutzerProjekteBearbeiten {
         const Projekttitel = titelProjekt;
         const titel = document.getElementById("titel").value;
         const beschreibung = document.getElementById("beschreibung").value;
-        const endtermin = {datum: document.getElementById("datum").value, uhrzeit: document.getElementById("uhrzeit").value};
+        const datum = new Date(document.getElementById("datum").value);
+        const datumDeutsch = datum.toLocaleDateString("de-DE");
+        const uhrzeit = document.getElementById("uhrzeit").value;
+        const endtermin = {datum: datumDeutsch, uhrzeit: uhrzeit};
         const priorität = document.getElementById("priorität").value;
         const zwischenschritte = [document.getElementById("zwischenschritte").value];
         /*let zwischenschritt;
@@ -53,11 +56,11 @@ export class nutzerProjekteBearbeiten {
     static beispielprojektErstellen(){
         const neuesProjekt = new projekt("Mein Projekt");
         nutzerProjekte.push(neuesProjekt);
-        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "mittel", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "mittel", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_1);
-        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich erstelle eine zweite Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "niedrig", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich erstelle eine zweite Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "niedrig", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_2);
-        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: "10-10-25", uhrzeit: "24:00"}, "hoch", ["schritt 1", "schritt 2", "Schritt 3"]);
+        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "hoch", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_3);
     }
 
