@@ -1,8 +1,8 @@
-import iconBearbeiten from '../../images/iconBearbeiten.svg';
-import iconLöschen from '../../images/iconLöschen.svg';
-import iconAbgeschlossen from "../../images/iconAbgeschlossen.svg"
-import iconNichtAbgeschlossen from "../../images/iconNichtAbgeschlossen.svg"
-import {nutzerProjekte} from "../projekteUndAufgabenUntermodule/nutzerProjekte"
+import iconBearbeiten from '../images/iconBearbeiten.svg';
+import iconLöschen from '../images/iconLöschen.svg';
+import iconAbgeschlossen from "../images/iconAbgeschlossen.svg"
+import iconNichtAbgeschlossen from "../images/iconNichtAbgeschlossen.svg"
+import {nutzerProjekte} from "../nutzerProjekte"
 
 
 export class domManipulation {
@@ -14,12 +14,32 @@ export class domManipulation {
         for (let i = 0; i < nutzerProjekte.length; i++) {
             const div = document.createElement("div");
             div.className = "projekt";
-            div.addEventListener("click", () => domManipulation.aufgabenInDomÜbernehmen(nutzerProjekte[i].titel));
-            div.innerHTML = `
-                <p>${nutzerProjekte[i].titel}</p>
-                <img src="${iconBearbeiten}" width="15px">
-                <img src="${iconLöschen}" width="15px">
-            `;
+            const text = document.createElement("p");
+            text.textContent = nutzerProjekte[i].titel;
+            text.addEventListener("click", () => domManipulation.aufgabenInDomÜbernehmen(nutzerProjekte[i].titel));
+            div.appendChild(text);
+            const bearbeitenButton = document.createElement("img");
+            bearbeitenButton.src = iconBearbeiten;
+            bearbeitenButton.width = "15";
+            bearbeitenButton.addEventListener("click", () => {
+                const signalbearbeiten = new CustomEvent("buttonBearbeitenGeklickt", {
+                    detail: nutzerProjekte[i].titel,
+                    bubbles: true,
+                });  
+                document.dispatchEvent(signalbearbeiten); 
+            });
+            div.appendChild(bearbeitenButton);
+            const löschenButton = document.createElement("img");
+            löschenButton.src = iconLöschen;
+            löschenButton.width = "15";
+            löschenButton.addEventListener("click", () => {
+                const signalLöschen = new CustomEvent("buttonLöschenGeklickt", {
+                    detail: nutzerProjekte[i].titel,
+                    bubbles: true,
+                });
+                document.dispatchEvent(signalLöschen);
+            });
+            div.appendChild(löschenButton);
             ausgewählterHTMLBereich.appendChild(div);
         }
     }

@@ -13,20 +13,24 @@
     z-index: 3;
 }
 
-p{
+#eingabeContainerProjekte>p{
     align-self: flex-start;
     margin-left: 50px;
 }
 
-input{
+#eingabeContainerProjekte>input{
     width: 400px;
 }
 
+#projektÜbernehmenBtn{
+    display: none;
+}
+
 #eingabeContainerProjekte>div{
-    align-self: start;
+    align-self: flex-start;
     display: flex;
-    margin-top: 20px;
     margin-left: 46px;
+    margin-top: 20px;
 }
 
 button{

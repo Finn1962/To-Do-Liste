@@ -1,15 +1,23 @@
-import {projekt} from "./projekteUndAufgabenUntermodule/construktoren/construktorProjekte"
-import {aufgabe} from "./projekteUndAufgabenUntermodule/construktoren/construktorAufgaben"
-import {nutzerProjekte} from "./projekteUndAufgabenUntermodule/nutzerProjekte"
-import {domManipulation} from "./projekteUndAufgabenUntermodule/domManipulation"
+import {projekt} from "./construktoren/construktorProjekte"
+import {aufgabe} from "./construktoren/construktorAufgaben"
+import {nutzerProjekte} from "../nutzerProjekte"
 
 export class nutzerProjekteBearbeiten {
     
     static neuesProjekt(){
         const neuesProjekt = new projekt(document.getElementById("eingabeFeldProjekte").value);
-        document.getElementById("eingabeFeldProjekte").value = "";
         nutzerProjekte.push(neuesProjekt);
-        domManipulation.projekteInDomÜbernehmen();
+    }
+
+    static projektLöschen(titelProjekt){
+        const indexProjekt = nutzerProjekte.findIndex(p => p.titel == titelProjekt);
+        nutzerProjekte.splice(indexProjekt, 1);
+    }
+
+    static projektBearbeiten (titelProjekt){
+        const eingabefeld = document.getElementById("eingabeFeldProjekte");
+        const indexProjekt = nutzerProjekte.findIndex(p => p.titel == titelProjekt);
+        nutzerProjekte[indexProjekt].titel = eingabefeld.value;
     }
 
     static neueAufgabe(){
@@ -26,23 +34,22 @@ export class nutzerProjekteBearbeiten {
             zwischenschritte.push(zwischenschritt);
         }
         const neueAufgabe = new aufgabe(titel, beschreibung, endtermin, priorität, zwischenschritte);
-        const index = nutzerProjekte.findIndex(p => p.titel == titelProjekt);
-        nutzerProjekte[index].aufgaben.push(neueAufgabe)
+        const indexProjekt = nutzerProjekte.findIndex(p => p.titel == titelProjekt);
+        nutzerProjekte[indexProjekt].aufgaben.push(neueAufgabe)
     }
 
-    static nachWichtigkeitSortieren() {
+    static aufgabenNachWichtigkeitSortieren(){
         const prioritätRang = {
             "hoch": 3,
             "mittel": 2,
             "niedrig": 1,
         }
-        
         for (let i = 0; i < nutzerProjekte.length; i++){
             nutzerProjekte[i].aufgaben.sort((a, b) => prioritätRang[b.priorität] - prioritätRang[a.priorität]);
         }
     }
     
-    static beispielprojekt(){
+    static beispielprojektErstellen(){
         const neuesProjekt = new projekt("Mein Projekt");
         nutzerProjekte.push(neuesProjekt);
         const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "mittel", ["schritt 1", "schritt 2", "Schritt 3"]);
@@ -51,9 +58,6 @@ export class nutzerProjekteBearbeiten {
         neuesProjekt.aufgaben.push(aufgabe_2);
         const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: "10.10.25", uhrzeit: "24:00"}, "hoch", ["schritt 1", "schritt 2", "Schritt 3"]);
         neuesProjekt.aufgaben.push(aufgabe_3);
-        nutzerProjekteBearbeiten.nachWichtigkeitSortieren();
-        domManipulation.projekteInDomÜbernehmen();
-        domManipulation.aufgabenInDomÜbernehmen();
     }
 
     static nutzerProjekteConsolenAusgabe(){
