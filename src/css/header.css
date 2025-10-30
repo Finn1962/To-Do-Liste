@@ -5,9 +5,9 @@ header{
     position: fixed;
     right: 0;
     z-index: 1;
-    background-color: white;
+    background-color: var(--background-color);
     box-sizing: border-box; 
-    padding: 0 5% 0 5%;  
+    padding: 0 7% 0 7%;  
 }
 
 .textUndButton{
@@ -18,7 +18,7 @@ header{
 
 .textUndButton>p{
     font-size: var(--überschriftH2);
-    font-weight: 300;
+    font-weight: 400;
     margin-top: 0px;
     margin-bottom: 0px; 
     text-decoration-color: var(--mainColor1);

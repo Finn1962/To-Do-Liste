@@ -20,6 +20,9 @@ document.addEventListener("buttonAufgabenAnzeigenGeklickt", (event)=> {
     titelProjekt = event.detail;
 });
 
+
+
+
 //Eventlistener Eingabefläche Projekte//////////////////////////////////////////////
 
 //Eingabefläche für neues Projekt anzeigen bei click
@@ -40,7 +43,7 @@ document.getElementById("projektAbbrechenBtn").addEventListener("click", ()=> {
 });
 
 
-//Projekte Bearbeiten//////////////////////////////////////////////
+//Projekte Bearbeiten
 
 //Eingabefläche Eingabefläche für Bearbeiten Anzeigen
 document.addEventListener("buttonProjektBearbeitenGeklickt", (event) => {
@@ -56,7 +59,7 @@ document.getElementById("projektÜbernehmenBtn").addEventListener("click", () =>
 });
 
 
-//Projekte Löschen//////////////////////////////////////////////
+//Projekte Löschen
 
 //Eingabefläche Eingabefläche für Löschenüberprüfung Anzeigen
 document.addEventListener("buttonProjektLöschenGeklickt", (event) => {
@@ -69,12 +72,16 @@ document.getElementById("jaBtn").addEventListener("click", () => {
     nutzerProjekteBearbeiten.projektLöschen(titelProjekt);
     domManipulation.projekteInDomÜbernehmen();
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
+    domManipulation.aufgabenAusDomEntfernen();
 });
 
 //Abbrechen bei click auf nein Button
 document.getElementById("neinBtn").addEventListener("click", () => {
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
 });
+
+
+
 
 //Eventlistener Eingabefläche Aufgaben//////////////////////////////////////////////
 
@@ -97,7 +104,7 @@ document.getElementById("aufgabenAbbrechenBtn").addEventListener("click", ()=>{
 });
 
 
-//Aufgaben Bearbeiten//////////////////////////////////////////////
+//Aufgaben Bearbeiten
 
 //Eingabefläche Eingabefläche für Aufgaben bearbeiten Anzeigen
 document.addEventListener("buttonAufgabeBearbeitenGeklickt", (event) => {
@@ -113,9 +120,9 @@ document.getElementById("aufgabenÜbernehmenBtn").addEventListener("click", ()=>
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
 });
 
-//Aufgaben Löschen//////////////////////////////////////////////
+//Aufgaben Löschen
 
-//Eingabefläche Eingabefläche für Aufgaben löschenüberprüfung Anzeigen
+//Aufgabe Löschen bei Click auf Button
 document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
     titelAufgabe = event.detail;
     nutzerProjekteBearbeiten.aufgabeLöschen(titelAufgabe, titelProjekt);
@@ -124,7 +131,35 @@ document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
 
 
 
-//Beispielprojekt Laden//////////////////////////////////////////////
+
+//Eventlistener Aufgabenstatus//////////////////////////////////////////////
+
+//Aufgabenstatus bei Click ändern
+document.addEventListener("buttonAufgabenstatusGecklickt", (event) => {
+    titelAufgabe = event.detail.titel;
+    let id = event.detail.id
+    domManipulation.aufgabenStatusÄndern(titelAufgabe, titelProjekt, id);
+    nutzerProjekteBearbeiten.aufgabenStatusÄndern(titelAufgabe, titelProjekt);
+});
+
+
+
+
+//Eventlistener Aufgabengröße ändern
+
+//Aufgaben werden bei click vergrößert oder verkleinert
+document.addEventListener("buttonAufgabNeuSkalierenGeklickt", (event) => {
+    titelAufgabe = event.detail.titel;
+    let idButton = event.detail.ids.idButton;
+    let idAufgabe = event.detail.ids.idAufgabe;
+    domManipulation.aufgabenHöheÄndern(titelAufgabe, titelProjekt, idButton, idAufgabe);
+    nutzerProjekteBearbeiten.aufgabenHöheÄndern(titelAufgabe, titelProjekt);
+});
+
+
+
+
+//Beispielprojekt Laden
 
 //Beispiel projekt erstellen beim Laden der Seite
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -133,10 +168,3 @@ document.addEventListener("DOMContentLoaded", ()=> {
     nutzerProjekteBearbeiten.nutzerProjekteConsolenAusgabe();
     domManipulation.projekteInDomÜbernehmen();
 });
-
-
-/*window.addEventListener("keydown", (event)=> {
-    if (event.key != "a") return;
-    nutzerProjekteBearbeiten.neueAufgabe();
-    nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
-});*/

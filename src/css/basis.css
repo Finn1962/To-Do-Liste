@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root{
-    --mainColor1: #dcdcdc;
-    --mainColor2: #c6111a;
-    --mainColor3: #afafaf;
+    --mainColor1: #f6f6f6;
+    --mainColor2: #e4565d;
+    --mainColor3: #000000;
     --mainColorHover: #000000;
+    background-color: #ffffff;
     --logoGrö0e: 150px;
     --vergrößerungIcons: 23px;
+    --vergrößerungIcons2: 27px;
     --überschriftH2: 30px;
     --überschriftH3: 16px;
     --hoverFontSize: 20px;
 }
 
 body{
+    color: rgb(0, 0, 0);
+    background-color: var(--background-color);
     margin: 0;
     font-family: "Story Script", Helvetica, Arial, sans-serif;
     font-weight: 300;

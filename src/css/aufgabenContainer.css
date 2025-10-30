@@ -10,19 +10,20 @@
 }
 
 #aufgabencontainer{
-    padding: 100px 5% 50px 5%;
+    padding: 100px 7% 50px 7%;
     width: 100%;
 }
 
 .aufgabe{
-    margin-top: 50px;
-    width: calc(100%-40px);
-    /*height: 100px;
-    overflow: hidden;*/
+    margin-top: 30px;
+    width: calc(100% - 40px);
+    height: 90px;
+    overflow: hidden;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 40px 0 40px;
     background-color: var(--mainColor1);
     animation: slideUp 0.4s ease-out forwards;
+    transition: height 0.5s ease, transform 0.3s ease;
 }
 
 .container1{
@@ -33,7 +34,7 @@
 
 .container1>img{
     margin-left: 10px;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease, transform 0.5s ease;
 }
 
 .container1>img:hover{
@@ -46,26 +47,38 @@
 }
 
 .container2>div>img{
-    margin-right: 5px;
-    transform: translateY(-3%);
+    transform: translateY(2px);
+    margin-right: 10px;
+    transition: width 0.5s ease;
+}
+
+.container2>div>img:hover{
+    width: var(--vergrößerungIcons2);
+}
+
+.container2>div>p{
+    transform: translateY(6px);
+}
+
+.container2>p{
+    transform: translateY(6px);
 }
 
 .trennbalken{
     width: 1px;
-    height: 55px;
+    height: 50px;
     margin-top: 5px;
     background-color: var(--mainColor3);
 }
 
-.datum{
+.container2>div>.datum{
+    transform: translateY(-7px);
     margin: 0px;
-    transform: translateY(-20%);
 }
 
 .aufgabe>p{
-    margin-top: 50px;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-top: 45px;
+    margin-bottom: 15px;
 }
 
 .aufgabe>hr{

@@ -25,6 +25,8 @@ export class eingabeContainerAnzeigen {
     }
 
     static aufgabenEingabeContainerAnzeigen() {
+        document.getElementById("aufgabenÜbernehmenBtn").style.display = "none";
+        document.getElementById("aufgabenSpeichernBtn").style.display = "block";
         document.getElementById("eingabeContainerAufgaben").style.visibility = "visible"
         overlay.style.visibility = "visible"; 
     }
