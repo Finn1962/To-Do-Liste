@@ -12,6 +12,7 @@ export class domManipulation {
         ausgewählterHTMLBereich.innerHTML = "";
         
         for (let i = 0; i < nutzerProjekte.length; i++) {
+            //Projektbutton zum auswählen wird erstellt
             const div = document.createElement("div");
             div.className = "projekt";
             const text = document.createElement("p");
@@ -23,6 +24,7 @@ export class domManipulation {
                 });  
                 document.dispatchEvent(signalAnzeigen); 
             });
+            //Projekt Bearbeiten Button anhängen
             div.appendChild(text);
             const bearbeitenButton = document.createElement("img");
             bearbeitenButton.src = iconBearbeiten;
@@ -34,6 +36,7 @@ export class domManipulation {
                 });  
                 document.dispatchEvent(signalbearbeiten); 
             });
+            //Projekt Löschen Button anhängen
             div.appendChild(bearbeitenButton);
             const löschenButton = document.createElement("img");
             löschenButton.src = iconLöschen;
@@ -51,6 +54,7 @@ export class domManipulation {
     }
 
     static aufgabenInDomÜbernehmen(projekttitel){
+        document.getElementById("buttonAufgabenHinzufügen").style.visibility = "visible";
         const ausgewählterHTMLBereich = document.getElementById("aufgabenBereich");
         ausgewählterHTMLBereich.innerHTML = "";
         const projekt = nutzerProjekte.find(p => p.titel == projekttitel);
@@ -59,6 +63,8 @@ export class domManipulation {
             
             document.getElementById("text").textContent = "Aufgaben";
             //Aufgabencode in HTML einfügen
+            const datum = new Date(projekt.aufgaben[i].endtermin.datum);
+            const datumDeutsch = datum.toLocaleDateString("de-DE");
             const aufgabenDiv = document.createElement("div");
             aufgabenDiv.className = "aufgabe"
             aufgabenDiv.id = `aufgabe${i}`
@@ -72,7 +78,7 @@ export class domManipulation {
                     <p>Priorität: ${projekt.aufgaben[i].priorität}</p>
                     <div class="trennbalken"></div>
                     <div style="display: flex; flex-direction: column; justify-content: end;">
-                        <p class="datum">${projekt.aufgaben[i].endtermin.datum}</p>
+                        <p class="datum">${datumDeutsch}</p>
                         <p class="datum" style="text-align: right;">${projekt.aufgaben[i].endtermin.uhrzeit}</p>
                     </div>
                 </div>
@@ -100,9 +106,10 @@ export class domManipulation {
                 zwischenschritteBox.innerHTML += htmlCodeZwischenschritte;
             }
             
-            //Löchen- und Bearbeiten Button Anhängen
+            //Buttons Aufgabe
             const div = document.createElement("div");
             div.className = "container1";
+            //Bearbeitenbutton Anhängen
             const bearbeitenButton = document.createElement("img");
             bearbeitenButton.src = iconBearbeiten;
             bearbeitenButton.width = "15";
@@ -114,6 +121,7 @@ export class domManipulation {
                 document.dispatchEvent(signalBearbeiten); 
             });
             div.appendChild(bearbeitenButton);
+            //Löschenbutton Anhängen
             const löschenButton = document.createElement("img");
             löschenButton.src = iconLöschen;
             löschenButton.width = "15";
@@ -127,6 +135,7 @@ export class domManipulation {
             div.appendChild(löschenButton);
             const aufgabe = document.getElementById(`aufgabe${i}`);
             aufgabe.prepend(div);   
+            //Abgescholossenbutton Anhängen. 
         }
     }
 }

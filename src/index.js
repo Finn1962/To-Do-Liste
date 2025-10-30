@@ -12,13 +12,12 @@ import {domManipulation} from "./index_/domManipulation"
 
 let titelProjekt;
 let titelAufgabe;
-let aktivesProjekt;
 
 
-//Eventlistener zum anzeigen von Projektaufgaben
+//Augaben anzeigen bei Klick auf Projektbutton
 document.addEventListener("buttonAufgabenAnzeigenGeklickt", (event)=> {
     domManipulation.aufgabenInDomÜbernehmen(event.detail)
-    aktivesProjekt = event.detail;
+    titelProjekt = event.detail;
 });
 
 //Eventlistener Eingabefläche Projekte//////////////////////////////////////////////
@@ -77,8 +76,6 @@ document.getElementById("neinBtn").addEventListener("click", () => {
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
 });
 
-
-
 //Eventlistener Eingabefläche Aufgaben//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Aufgaben Anzeigen
@@ -86,11 +83,11 @@ document.getElementById("buttonAufgabenHinzufügen").addEventListener("click", (
     eingabeContainerAnzeigen.aufgabenEingabeContainerAnzeigen();
 });
 
-//Neue Aufgabe erstellen bei click auf Button
+//Neue Aufgabe erstellen bei click auf Speichernbutton
 document.getElementById("aufgabenSpeichernBtn").addEventListener("click", ()=>{
-    nutzerProjekteBearbeiten.neueAufgabe(aktivesProjekt);
+    nutzerProjekteBearbeiten.neueAufgabe(titelProjekt);
     nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
-    domManipulation.aufgabenInDomÜbernehmen(aktivesProjekt);
+    domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
 });
 
@@ -104,23 +101,26 @@ document.getElementById("aufgabenAbbrechenBtn").addEventListener("click", ()=>{
 
 //Eingabefläche Eingabefläche für Aufgaben bearbeiten Anzeigen
 document.addEventListener("buttonAufgabeBearbeitenGeklickt", (event) => {
-    console.log(event.detail);
     titelAufgabe = event.detail;
+    eingabeContainerAnzeigen.aufgabenBearbeitenContainerAnzeigen(titelAufgabe, titelProjekt);   
+});
+
+//Projekt Bearbeiten bei click auf Übernehmen Button
+document.getElementById("aufgabenÜbernehmenBtn").addEventListener("click", ()=>{
+    nutzerProjekteBearbeiten.aufgabeBearbeiten(titelAufgabe, titelProjekt);
+    eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
+    nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
+    domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
 });
 
 //Aufgaben Löschen//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Aufgaben löschenüberprüfung Anzeigen
 document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
-    console.log(event.detail);
     titelAufgabe = event.detail;
+    nutzerProjekteBearbeiten.aufgabeLöschen(titelAufgabe, titelProjekt);
+    domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
 });
-
-
-
-
-
-
 
 
 

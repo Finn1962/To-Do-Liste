@@ -5,13 +5,17 @@
     --mainColor2: #c6111a;
     --mainColor3: #afafaf;
     --mainColorHover: #000000;
+    --logoGrö0e: 150px;
     --vergrößerungIcons: 23px;
+    --überschriftH2: 30px;
+    --überschriftH3: 16px;
+    --hoverFontSize: 20px;
 }
 
 body{
     margin: 0;
     font-family: "Story Script", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
 }

@@ -1,4 +1,5 @@
 header{
+    will-change: transform, opacity;
     width: calc(100% - 330px);
     height: 100px;
     position: fixed;
@@ -16,7 +17,7 @@ header{
 }
 
 .textUndButton>p{
-    font-size: 40px;
+    font-size: var(--überschriftH2);
     font-weight: 300;
     margin-top: 0px;
     margin-bottom: 0px; 
@@ -24,9 +25,14 @@ header{
 }
 
 .textUndButton>div{
+    visibility: hidden;
     transform: translateY(5px);
     display: flex;
     justify-content: space-between;
+    transition: margin 0.5s ease;
+}
+
+.textUndButton>div{
     transition: margin 0.5s ease;
 }
 
@@ -38,18 +44,19 @@ header{
 .textUndButton>div>p{
     color: var(--mainColor2);
     margin: 0px;
+    font-size: var(--überschriftH3);
     user-select: none;
-    transition: font-size 0.5s ease;
     align-self: center;
+    transition: font-size 0.5s ease;
 }
 
 .textUndButton>div:hover>p{
-    font-size: 25px;
+    font-size: var(--hoverFontSize);
     color: var(--mainColorHover)
 }
 
 .textUndButton>div>svg{
-    width: 30px;
+    width: 25px;
     margin-left: 10px;
 }
 

@@ -19,7 +19,7 @@
 }
 
 #projektcontainer>img{
-    width: 150px;
+    width: var(--logoGrö0e);
     margin-left: 50%;
     margin-top: 30px;
     transform: translateX(-50%);
@@ -39,19 +39,20 @@
 }
 
 .buttonHinzufügen>svg{
-    width: 30px;
+    width: 23px;
     color: aliceblue;  
 }
 
 .buttonHinzufügen>p{
     color: var(--mainColor2);
+    font-size: var(--überschriftH3);
     margin-left: 10px;
     transition: font-size 0.5s ease;
 }
 
 .buttonHinzufügen:hover>p {
     color: var(--mainColorHover);
-    font-size: 25px;
+    font-size: var(--hoverFontSize);
 }
 
 .buttonHinzufügen:hover>svg .st0{
@@ -88,7 +89,7 @@
 
 .projekt:hover>p{
     margin-left: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     text-decoration: underline;
     text-underline-offset: 10px;
     text-decoration-thickness: 1px; 
