@@ -37,7 +37,6 @@ export class eingabeContainerAnzeigen {
         document.getElementById("priorität").value = "";
         document.getElementById("datum").value = "";
         document.getElementById("uhrzeit").value = "";
-        document.getElementById("zwischenschritte").value = "";
         overlay.style.visibility = "hidden"; 
     }
 
@@ -49,7 +48,6 @@ export class eingabeContainerAnzeigen {
         document.getElementById("priorität").value = aufgabe.priorität;
         document.getElementById("datum").value = aufgabe.endtermin.datum;
         document.getElementById("uhrzeit").value = aufgabe.endtermin.uhrzeit;
-        document.getElementById("zwischenschritte").value = aufgabe.zwischenschritte;
         document.getElementById("aufgabenÜbernehmenBtn").style.display = "block";
         document.getElementById("aufgabenSpeichernBtn").style.display = "none";
         document.getElementById("eingabeContainerAufgaben").style.visibility = "visible";

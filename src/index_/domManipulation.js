@@ -85,26 +85,10 @@ export class domManipulation {
 
                 <p>${projekt.aufgaben[i].beschreibung}</p>
 
-                <div id="${"box"+i}" style="display: flex; justify-content: space-around;">
-                </div>
-
                 <hr>
                 <hr>`
             ;
             ausgewählterHTMLBereich.appendChild(aufgabenDiv);
-
-            //Zwischenschritte Anhängen
-            const zwischenschritteBox = document.getElementById("box"+i);
-            if (projekt.aufgaben[i].zwischenschritte.length == 0) return;
-            for (let j = 0; j < projekt.aufgaben[i].zwischenschritte.length; j++){
-                const htmlCodeZwischenschritte = 
-                    `<div style="display: flex; justify-content: center;">
-                        <img src="${iconNichtAbgeschlossen}" width="20px" style="margin-right: 5px;">
-                        <p>${projekt.aufgaben[i].zwischenschritte[j]}</p>
-                    </div>`
-                ;
-                zwischenschritteBox.innerHTML += htmlCodeZwischenschritte;
-            }
             
             //Buttons Aufgabe
             const div = document.createElement("div");
