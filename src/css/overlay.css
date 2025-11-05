@@ -1,9 +1,0 @@
-#overlay{
-    visibility: hidden;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    opacity: 50%;
-    z-index: 2;
-}
