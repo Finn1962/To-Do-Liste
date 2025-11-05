@@ -9,13 +9,14 @@ export class nutzerProjekteBearbeiten {
         if (titel == "") {
             return "keinTitel";
         };
-        const titelExtistiert = nutzerProjekte.some(p => p.titel == titel)
-        if (titelExtistiert) {
-            return "titelVergeben";
+        if(nutzerProjekte.titel) {
+            const titelExtistiert = nutzerProjekte.some(p => p.titel == titel)
+            if (titelExtistiert) {
+                return "titelVergeben";
+            };
         };
         const neuesProjekt = new projekt(titel);
         nutzerProjekte.push(neuesProjekt);
-        return true
     }
 
     static projektBearbeiten (titelProjekt){
@@ -23,7 +24,7 @@ export class nutzerProjekteBearbeiten {
         if (titel == "") {
             return "keinTitel";
         };
-        const titelExtistiert = nutzerProjekte.some(p => p.titel == titel)
+        const titelExtistiert = nutzerProjekte.some(p => p.titel == titel && p.titel !== titelProjekt)
         if (titelExtistiert) {
             return "titelVergeben";
         };
@@ -54,7 +55,6 @@ export class nutzerProjekteBearbeiten {
         const priorität = document.getElementById("priorität").value;
         const neueAufgabe = new aufgabe(titel, beschreibung, endtermin, priorität);
         projekt.aufgaben.push(neueAufgabe)
-        return true;
     }
     
     static aufgabeBearbeiten(titelAufgabe, titelProjekt){
@@ -64,7 +64,7 @@ export class nutzerProjekteBearbeiten {
         if (titel == "") {
             return "keinTitel";
         };
-        const titelExtistiert = projekt.aufgaben.some(a => a.titel == titel)
+        const titelExtistiert = projekt.aufgaben.some(a => a.titel == titel && a.titel !== titelAufgabe)
         if (titelExtistiert) {
             return "titelVergeben";
         };
@@ -73,7 +73,6 @@ export class nutzerProjekteBearbeiten {
         aufgabe.endtermin.datum = document.getElementById("datum").value
         aufgabe.endtermin.uhrzeit = document.getElementById("uhrzeit").value
         aufgabe.priorität = document.getElementById("priorität").value
-        return true;
     }
 
     static aufgabeLöschen(titelAufgabe, titelProjekt){

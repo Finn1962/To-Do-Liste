@@ -9,9 +9,30 @@ import "./css/header.css"
 import {nutzerProjekteBearbeiten} from "./index_/nutzerprojekteBearbeiten"
 import {eingabeContainerAnzeigen} from "./index_/eingabeContainerAnzeigen"
 import {domManipulation} from "./index_/domManipulation"
+import {speicher} from "./nutzerProjekte"
 
 let titelProjekt;
 let titelAufgabe;
+
+
+
+
+
+//Laden von Daten und ansonsten Beispielprojekt erstellen
+document.addEventListener("DOMContentLoaded", ()=> {
+    if (!speicher.laden()) {
+        nutzerProjekteBearbeiten.beispielprojektErstellen();
+        nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
+        domManipulation.projekteInDomÜbernehmen();
+        nutzerProjekteBearbeiten.nutzerProjekteConsolenAusgabe();
+    }
+    nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
+    domManipulation.projekteInDomÜbernehmen()
+    nutzerProjekteBearbeiten.nutzerProjekteConsolenAusgabe();
+});
+
+
+
 
 
 //Augaben anzeigen bei Klick auf Projektbutton
@@ -19,8 +40,6 @@ document.addEventListener("buttonAufgabenAnzeigenGeklickt", (event)=> {
     domManipulation.aufgabenInDomÜbernehmen(event.detail)
     titelProjekt = event.detail;
 });
-
-
 
 
 
@@ -45,6 +64,7 @@ document.getElementById("projektSpeichernBtn").addEventListener("click", ()=> {
     }
     domManipulation.projekteInDomÜbernehmen();
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
+    speicher.speichern();
 });
 
 //Eingabefläche verbergen bei click auf Abbrechenbutton
@@ -73,6 +93,7 @@ document.getElementById("projektÜbernehmenBtn").addEventListener("click", () =>
     }
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
     domManipulation.projekteInDomÜbernehmen();
+    speicher.speichern();
 });
 
 
@@ -90,14 +111,13 @@ document.getElementById("jaBtn").addEventListener("click", () => {
     domManipulation.projekteInDomÜbernehmen();
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
     domManipulation.aufgabenAusDomEntfernen();
+    speicher.speichern();
 });
 
 //Abbrechen bei click auf nein Button
 document.getElementById("neinBtn").addEventListener("click", () => {
     eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
 });
-
-
 
 
 
@@ -123,6 +143,7 @@ document.getElementById("aufgabenSpeichernBtn").addEventListener("click", ()=>{
     nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
+    speicher.speichern();
 });
 
 //Eingabefläche verbergen bei click auf Abbrechenbutton
@@ -152,6 +173,7 @@ document.getElementById("aufgabenÜbernehmenBtn").addEventListener("click", ()=>
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
     nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
+    speicher.speichern();
 });
 
 //Aufgaben Löschen
@@ -161,9 +183,8 @@ document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
     titelAufgabe = event.detail;
     nutzerProjekteBearbeiten.aufgabeLöschen(titelAufgabe, titelProjekt);
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
+    speicher.speichern();
 });
-
-
 
 
 
@@ -183,8 +204,6 @@ document.addEventListener("buttonAufgabenstatusGecklickt", (event) => {
 
 
 
-
-
 //Eventlistener Aufgabengröße
 
 //Aufgaben werden bei click vergrößert oder verkleinert
@@ -194,20 +213,4 @@ document.addEventListener("buttonAufgabNeuSkalierenGeklickt", (event) => {
     let idAufgabe = event.detail.ids.idAufgabe;
     domManipulation.aufgabenHöheÄndern(titelAufgabe, titelProjekt, idButton, idAufgabe);
     nutzerProjekteBearbeiten.aufgabenHöheÄndern(titelAufgabe, titelProjekt);
-});
-
-
-
-
-
-
-
-//Beispielprojekt Laden
-
-//Beispiel projekt erstellen beim Laden der Seite
-document.addEventListener("DOMContentLoaded", ()=> {
-    nutzerProjekteBearbeiten.beispielprojektErstellen();
-    nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
-    nutzerProjekteBearbeiten.nutzerProjekteConsolenAusgabe();
-    domManipulation.projekteInDomÜbernehmen();
 });

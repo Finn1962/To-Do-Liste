@@ -54,10 +54,10 @@ export class domManipulation {
         const ausgewählterHTMLBereich = document.getElementById("aufgabenBereich");
         ausgewählterHTMLBereich.innerHTML = "";
         const projekt = nutzerProjekte.find(p => p.titel == projekttitel);
-        
+        document.getElementById("text").textContent = projekttitel;
+
         for (let i = 0; i < projekt.aufgaben.length; i++) {
             
-            document.getElementById("text").textContent = "Aufgaben";
             //Aufgabencode in HTML einfügen
             const datum = new Date(projekt.aufgaben[i].endtermin.datum);
             let datumDeutsch = datum.toLocaleDateString("de-DE");
@@ -197,6 +197,7 @@ export class domManipulation {
 
     static aufgabenAusDomEntfernen() {
         document.getElementById("aufgabenBereich").innerHTML = "";
-        document.getElementById("buttonAufgabenHinzufügen").style.visibility = "hidden"; 
+        document.getElementById("buttonAufgabenHinzufügen").style.visibility = "hidden";
+        document.getElementById("text").textContent = "Wähle ein Projekt aus";
     }
 }
