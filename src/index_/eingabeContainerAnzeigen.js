@@ -35,6 +35,7 @@ export class eingabeContainerAnzeigen {
     }
 
     static aufgabenEingabeContainerAnzeigen() {
+        document.getElementById("priorität").value = "Hoch"
         document.getElementById("aufgabenÜbernehmenBtn").style.display = "none";
         document.getElementById("aufgabenSpeichernBtn").style.display = "block";
         document.getElementById("eingabeContainerAufgaben").style.visibility = "visible"

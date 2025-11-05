@@ -113,13 +113,13 @@ export class nutzerProjekteBearbeiten {
     }
     
     static beispielprojektErstellen(){
-        const neuesProjekt = new projekt("Mein Projekt");
+        const neuesProjekt = new projekt("Mein Beispielprojekt");
         nutzerProjekte.push(neuesProjekt);
-        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich erstelle eine Aufgabe", {datum: '2000-02-12', uhrzeit: '00:00'}, "Mittel");
+        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich muss etwas erledigen.", {datum: '2026-02-12', uhrzeit: '12:00'}, "Hoch");
         neuesProjekt.aufgaben.push(aufgabe_1);
-        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich erstelle eine zweite Aufgabe", {datum: '2000-02-12', uhrzeit: '00:00'}, "Niedrig");
+        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich muss etwas erledigen.", {datum: '2026-05-04', uhrzeit: '15:30'}, "Mittel");
         neuesProjekt.aufgaben.push(aufgabe_2);
-        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich erstelle eine dritte Aufgabe", {datum: '2000-02-12', uhrzeit: '00:00'}, "Hoch");
+        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich muss etwas erledigen.", {datum: '2026-10-20', uhrzeit: '18:00'}, "Niedrig");
         neuesProjekt.aufgaben.push(aufgabe_3);
     }
 
