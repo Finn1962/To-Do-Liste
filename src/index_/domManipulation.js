@@ -17,6 +17,7 @@ export class domManipulation {
             const div = document.createElement("div");
             div.className = "projekt";
             const text = document.createElement("p");
+            text.classList.add("klickbar");
             text.textContent = nutzerProjekte[i].titel;
             text.addEventListener("click", () => {
                 const signalAnzeigen = new CustomEvent("buttonAufgabenAnzeigenGeklickt", {
@@ -72,6 +73,7 @@ export class domManipulation {
             aufgabenDiv.id = "aufgabe"+i;
             aufgabenDiv.innerHTML = `            
                 <div class="container2">
+                    <div class="trennbalken"></div>
                     <div id="divTitel${i}" style="display: flex;">
                         <p>${projekt.aufgaben[i].titel}</p>
                     </div>
@@ -82,13 +84,12 @@ export class domManipulation {
                         <p class="datum" style="text-align: right;">${uhrzeit}</p>
                         <p class="datum">${datumDeutsch}</p>
                     </div>
-                </div>
-
-                <p>${projekt.aufgaben[i].beschreibung}</p>`
+                    <div class="trennbalken"></div>
+                </div>`
             ;
             ausgewählterHTMLBereich.appendChild(aufgabenDiv);
             
-            //Buttons Aufgabe
+            //Abschnitt mit allen Buttons für die Aufgaben
             const div = document.createElement("div");
             div.className = "container1";
            
@@ -110,18 +111,6 @@ export class domManipulation {
             );
             div.appendChild(löschenButton);
 
-            //Größebutton Anhängen
-            if (projekt.aufgaben[i].beschreibung) {
-                const pfeilButton = this.neuerButton(
-                    pfeil,
-                    15,
-                    "buttonAufgabNeuSkalierenGeklickt",
-                    {titel: projekt.aufgaben[i].titel, ids:{idButton:"pfeilbutton"+i, idAufgabe:"aufgabe"+i}},
-                    "pfeilbutton"+i
-                );
-                div.appendChild(pfeilButton);
-            }
-
             const aufgabe = document.getElementById(`aufgabe${i}`);
             aufgabe.prepend(div);  
             
@@ -139,33 +128,55 @@ export class domManipulation {
                 {titel: projekt.aufgaben[i].titel, id: "statusbutton"+i},
                 "statusbutton"+i
             );
-            const divTitel = document.getElementById(`divTitel${i}`);
-            divTitel.prepend(statusButton);
+            const divFürTitel = document.getElementById(`divTitel${i}`);
+            divFürTitel.prepend(statusButton);
+        
+            //Größebutton Anhängen
+            if (projekt.aufgaben[i].beschreibung) {
+                const pfeilButton = this.neuerButton(
+                    pfeil,
+                    15,
+                    "buttonAufgabNeuSkalierenGeklickt",
+                    {titel: projekt.aufgaben[i].titel, ids:{idButton:"pfeilbutton"+i, idAufgabe:"aufgabe"+i}},
+                    "pfeilbutton"+i
+                );
+                aufgabe.append(pfeilButton);
+            }
+
+            //Beschreibung anhängen
+            const beschreibung = document.createElement("p");
+            beschreibung.className = "beschreibung"
+            beschreibung.textContent = projekt.aufgaben[i].beschreibung;
+            aufgabe.append(beschreibung);
         }
     }
 
-    static neuerButton(src, width, ausgabeEventButton, detail, id) {
+    //Fabrikator Buttons
+    static neuerButton(src, width, ausgabeEventButton, eventdetail, id) {
         const button = document.createElement("img");
-            button.src = src;
-            button.width = `${width}`;
-            button.addEventListener("click", () => {
-                const signal = new CustomEvent(ausgabeEventButton, {
-                    detail: detail,
-                    bubbles: true,
-                });
-                document.dispatchEvent(signal);
+        button.classList.add("klickbar");
+        button.setAttribute("draggable", "false");
+        button.src = src;
+        button.width = `${width}`;
+        button.addEventListener("click", () => {
+            const signal = new CustomEvent(ausgabeEventButton, {
+                detail: eventdetail,
+                bubbles: true,
             });
-            button.id = `${id}`;
+            document.dispatchEvent(signal);
+        });
+        button.id = `${id}`;
         return button;
     }
 
     static aufgabenStatusÄndern(titelAufgabe, titelProjekt, id) {
         const projekt = nutzerProjekte.find(p => p.titel == titelProjekt);
         const aufgabe = projekt.aufgaben.find(a => a.titel == titelAufgabe);
+        const button = document.getElementById(id);
         if (aufgabe.erledigt) {
-            document.getElementById(id).src = iconNichtAbgeschlossen;
+            button.src = iconNichtAbgeschlossen;
         } else {
-            document.getElementById(id).src = iconAbgeschlossen;
+            button.src = iconAbgeschlossen;
         }
     }
 
@@ -175,7 +186,7 @@ export class domManipulation {
         const aufgabeElement = document.getElementById(idAufgabe);
         const button = document.getElementById(idButton);
         if (aufgabe.aufgeklappt) {
-            aufgabeElement.style.height = "90px";
+            aufgabeElement.style.height = "50px";
             button.style.transform = "rotate(0deg)";
         } else {
             const höheAufgecklick = aufgabeElement.scrollHeight;

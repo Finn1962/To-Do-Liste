@@ -9,6 +9,8 @@ export class eingabeContainerAnzeigen {
     }
 
     static projektEingabeContainerVerbergen() {
+        document.getElementById("warnmeldungProjekte").style.display = "none";
+        document.getElementById("warnmeldungProjekte2").style.display = "none";
         document.getElementById("eingabeFeldProjekte").value = "";
         document.getElementById("projektÜbernehmenBtn").style.display = "none";
         document.getElementById("projektSpeichernBtn").style.display = "block";
@@ -24,6 +26,14 @@ export class eingabeContainerAnzeigen {
         overlay.style.visibility = "visible";        
     }
 
+    static warnmeldungKeinProjekttitel() {
+        document.getElementById("warnmeldungProjekte").style.display = "block";
+    }
+
+    static warnmeldungVergebenerProjekttitel() {
+        document.getElementById("warnmeldungProjekte2").style.display = "block";
+    }
+
     static aufgabenEingabeContainerAnzeigen() {
         document.getElementById("aufgabenÜbernehmenBtn").style.display = "none";
         document.getElementById("aufgabenSpeichernBtn").style.display = "block";
@@ -32,11 +42,13 @@ export class eingabeContainerAnzeigen {
     }
 
     static aufgabenEingabeContainerVerbergen() {
+        document.getElementById("warnmeldungAufgaben2").style.display = "none";
+        document.getElementById("warnmeldungAufgaben").style.display = "none";
         document.getElementById("projektÜbernehmenBtn").style.display = "none";
         document.getElementById("eingabeContainerAufgaben").style.visibility = "hidden"
         document.getElementById("titel").value = "";
         document.getElementById("beschreibung").value = "";
-        document.getElementById("priorität").value = "";
+        document.getElementById("priorität").value = "hoch"
         document.getElementById("datum").value = "";
         document.getElementById("uhrzeit").value = "";
         overlay.style.visibility = "hidden"; 
@@ -54,6 +66,14 @@ export class eingabeContainerAnzeigen {
         document.getElementById("aufgabenSpeichernBtn").style.display = "none";
         document.getElementById("eingabeContainerAufgaben").style.visibility = "visible";
         overlay.style.visibility = "visible"; 
+    }
+
+    static warnmeldungKeinAufgabentitel() {
+        document.getElementById("warnmeldungAufgaben").style.display = "block";
+    }
+
+    static warnmeldungVergebenerAufgabentitel() {
+        document.getElementById("warnmeldungAufgaben2").style.display = "block";
     }
 
     static eingabeContainerLöschenÜberprüfungAnzeigen() {

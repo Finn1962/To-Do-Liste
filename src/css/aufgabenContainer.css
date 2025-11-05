@@ -15,39 +15,64 @@
 }
 
 .aufgabe{
+    display: grid;
+    grid-template-columns: 1fr 20fr 1fr;
+    grid-template-rows: 55px;
+    gap: 0px;
     margin-top: 30px;
     width: calc(100% - 40px);
-    height: 90px;
+    height: 50px;
     overflow: hidden;
     border-radius: 10px;
-    padding: 20px 40px 0 40px;
+    padding: 10px 30px 0 30px;
     background-color: var(--mainColor1);
-    animation: slideUp 0.4s ease-out forwards;
+    animation: slideUp 0.3s ease-out forwards;
     transition: height 0.5s ease, transform 0.3s ease;
 }
 
 .container1{
     display: flex;
-    justify-content: end;
-    margin-bottom: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 35px;
+    height: 40px;
+    padding-right: 30px;
+    margin-right: 10px;
 }
 
-.container1>img{
-    margin-left: 10px;
+.container1>img:first-child{
     transition: width 0.5s ease, transform 0.5s ease;
+}
+
+.container1>img:last-child{
+    transition: width 0.5s ease, transform 0.5s ease;
+    margin-left: 5px;
 }
 
 .container1>img:hover{
     width: var(--vergrößerungIcons);
 }
 
+.container1>p{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+}
+
+.datum{
+    transform: translateY(10px);
+}
+
 .container2{
    display: flex;
    justify-content: space-between;
+   align-items: center;
+   transform: translateY(-10px);
 }
 
 .container2>div>img{
-    transform: translateY(2px);
+    margin-top: 10px;
     margin-right: 10px;
     transition: width 0.5s ease;
 }
@@ -66,24 +91,27 @@
 
 .trennbalken{
     width: 1px;
-    height: 50px;
-    margin-top: 5px;
+    height: 40px;
+    margin-top: 10px;
     background-color: var(--mainColor3);
 }
 
 .container2>div>.datum{
-    transform: translateY(-7px);
     margin: 0px;
 }
 
-.aufgabe>p{
-    margin-top: 45px;
-    margin-bottom: 15px;
+.aufgabe>img{
+    margin-left: 35px;
+    margin-top: 15px;
+    transition: width 0.5s ease, transform 0.5s ease;
 }
 
-.aufgabe>hr{
-    margin-top: 5px;
-    border: none;      
-    height: 1px;    
-    background-color: var(--mainColor1);
+.aufgabe>img:hover{
+    width: var(--vergrößerungIcons);
+}
+
+.beschreibung{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    grid-column: span 2;
 }

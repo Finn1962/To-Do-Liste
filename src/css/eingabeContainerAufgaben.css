@@ -18,8 +18,18 @@
     width: 400px;
 }
 
+.warnmeldung{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    margin-bottom: 0px;
+}
+
 #beschreibung{
     width: 400px;
+    max-width: 400px;
+    min-width: 400px;
 }
 
 #priorität{

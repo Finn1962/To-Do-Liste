@@ -11,24 +11,11 @@
 }
 
 #projektcontainer:hover{
-    width: 400px;
+    width: 350px;
 }
 
 #projektcontainerplatzhalter{
     margin-right: 330px;
-}
-
-#projektcontainer>img{
-    width: var(--logoGrö0e);
-    margin-left: 50%;
-    margin-top: 30px;
-    transform: translateX(-50%);
-    transition: width 0.5s ease, margin 0.5s ease;
-}
-
-#projektcontainer:hover>img{
-    width: 200px;
-    margin-bottom: 10px;
 }
  
 .buttonHinzufügen{
@@ -68,10 +55,6 @@
     margin-top: 50px;
     margin-left: 60px;
     margin-bottom: 50px;
-    text-decoration: underline;
-    text-underline-offset: 10px;
-    text-decoration-thickness: 1px; 
-    text-decoration-color: var(--mainColor3);
 }
 
 .projekt{

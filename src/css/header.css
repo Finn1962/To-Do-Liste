@@ -18,10 +18,9 @@ header{
 
 .textUndButton>p{
     font-size: var(--überschriftH2);
-    font-weight: 400;
+    font-weight: 300;
     margin-top: 0px;
     margin-bottom: 0px; 
-    text-decoration-color: var(--mainColor1);
 }
 
 .textUndButton>div{
@@ -29,10 +28,6 @@ header{
     transform: translateY(5px);
     display: flex;
     justify-content: space-between;
-    transition: margin 0.5s ease;
-}
-
-.textUndButton>div{
     transition: margin 0.5s ease;
 }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Story+Script&display=swap');
 
 :root{
     --mainColor1: #f6f6f6;
@@ -7,19 +7,24 @@
     --mainColorHover: #000000;
     background-color: #ffffff;
     --logoGrö0e: 150px;
-    --vergrößerungIcons: 23px;
-    --vergrößerungIcons2: 27px;
+    --vergrößerungIcons:19px;
+    --vergrößerungIcons2: 26px;
     --überschriftH2: 30px;
     --überschriftH3: 16px;
-    --hoverFontSize: 20px;
+    --hoverFontSize: 18px;
+    --hoverLogoSize: 20px
 }
 
 body{
     color: rgb(0, 0, 0);
     background-color: var(--background-color);
     margin: 0;
-    font-family: "Story Script", Helvetica, Arial, sans-serif;
+    font-family: "inter", Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 16px;
     display: flex;
+}
+
+.klickbar{
+    cursor: pointer;
 }

@@ -23,7 +23,10 @@ document.addEventListener("buttonAufgabenAnzeigenGeklickt", (event)=> {
 
 
 
-//Eventlistener Eingabefläche Projekte//////////////////////////////////////////////
+
+
+
+//Eventlistener Projekte//////////////////////////////////////////////
 
 //Eingabefläche für neues Projekt anzeigen bei click
 document.getElementById("buttonProjektHinzufügen").addEventListener("click", ()=> {
@@ -32,7 +35,14 @@ document.getElementById("buttonProjektHinzufügen").addEventListener("click", ()
 
 //Neues Projekt erstellen bei click auf Speichern Button
 document.getElementById("projektSpeichernBtn").addEventListener("click", ()=> {
-    nutzerProjekteBearbeiten.neuesProjekt();
+    const zulässigkeitTitel = nutzerProjekteBearbeiten.neuesProjekt();
+    if (zulässigkeitTitel == "keinTitel") {
+        eingabeContainerAnzeigen.warnmeldungKeinProjekttitel();
+        return
+    } else if (zulässigkeitTitel == "titelVergeben") {
+        eingabeContainerAnzeigen.warnmeldungVergebenerProjekttitel();
+        return
+    }
     domManipulation.projekteInDomÜbernehmen();
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
 });
@@ -53,7 +63,14 @@ document.addEventListener("buttonProjektBearbeitenGeklickt", (event) => {
 
 //Projekt Bearbeiten bei click auf Übernehmen Button
 document.getElementById("projektÜbernehmenBtn").addEventListener("click", () => {
-    nutzerProjekteBearbeiten.projektBearbeiten(titelProjekt);
+    const zulässigkeitTitel = nutzerProjekteBearbeiten.projektBearbeiten(titelProjekt);
+    if (zulässigkeitTitel == "keinTitel") {
+        eingabeContainerAnzeigen.warnmeldungKeinProjekttitel();
+        return
+    } else if (zulässigkeitTitel == "titelVergeben") {
+        eingabeContainerAnzeigen.warnmeldungVergebenerProjekttitel();
+        return
+    }
     eingabeContainerAnzeigen.projektEingabeContainerVerbergen();
     domManipulation.projekteInDomÜbernehmen();
 });
@@ -83,7 +100,10 @@ document.getElementById("neinBtn").addEventListener("click", () => {
 
 
 
-//Eventlistener Eingabefläche Aufgaben//////////////////////////////////////////////
+
+
+
+//Eventlistener Aufgaben//////////////////////////////////////////////
 
 //Eingabefläche Eingabefläche für Aufgaben Anzeigen
 document.getElementById("buttonAufgabenHinzufügen").addEventListener("click", ()=>{
@@ -92,7 +112,14 @@ document.getElementById("buttonAufgabenHinzufügen").addEventListener("click", (
 
 //Neue Aufgabe erstellen bei click auf Speichernbutton
 document.getElementById("aufgabenSpeichernBtn").addEventListener("click", ()=>{
-    nutzerProjekteBearbeiten.neueAufgabe(titelProjekt);
+    const zulässigkeitTitel = nutzerProjekteBearbeiten.neueAufgabe(titelProjekt);
+    if (zulässigkeitTitel == "keinTitel") {
+        eingabeContainerAnzeigen.warnmeldungKeinAufgabentitel();
+        return;
+    } else if (zulässigkeitTitel == "titelVergeben") {
+        eingabeContainerAnzeigen.warnmeldungVergebenerAufgabentitel();
+        return;
+    }
     nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
@@ -114,7 +141,14 @@ document.addEventListener("buttonAufgabeBearbeitenGeklickt", (event) => {
 
 //Projekt Bearbeiten bei click auf Übernehmen Button
 document.getElementById("aufgabenÜbernehmenBtn").addEventListener("click", ()=>{
-    nutzerProjekteBearbeiten.aufgabeBearbeiten(titelAufgabe, titelProjekt);
+    const zulässigkeitTitel = nutzerProjekteBearbeiten.aufgabeBearbeiten(titelAufgabe, titelProjekt);
+    if (zulässigkeitTitel == "keinTitel") {
+        eingabeContainerAnzeigen.warnmeldungKeinAufgabentitel();
+        return;
+    } else if (zulässigkeitTitel == "titelVergeben") {
+        eingabeContainerAnzeigen.warnmeldungVergebenerAufgabentitel();
+        return;
+    }
     eingabeContainerAnzeigen.aufgabenEingabeContainerVerbergen();
     nutzerProjekteBearbeiten.aufgabenNachWichtigkeitSortieren();
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
@@ -132,6 +166,9 @@ document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
 
 
 
+
+
+
 //Eventlistener Aufgabenstatus//////////////////////////////////////////////
 
 //Aufgabenstatus bei Click ändern
@@ -145,7 +182,10 @@ document.addEventListener("buttonAufgabenstatusGecklickt", (event) => {
 
 
 
-//Eventlistener Aufgabengröße ändern
+
+
+
+//Eventlistener Aufgabengröße
 
 //Aufgaben werden bei click vergrößert oder verkleinert
 document.addEventListener("buttonAufgabNeuSkalierenGeklickt", (event) => {
@@ -155,6 +195,9 @@ document.addEventListener("buttonAufgabNeuSkalierenGeklickt", (event) => {
     domManipulation.aufgabenHöheÄndern(titelAufgabe, titelProjekt, idButton, idAufgabe);
     nutzerProjekteBearbeiten.aufgabenHöheÄndern(titelAufgabe, titelProjekt);
 });
+
+
+
 
 
 

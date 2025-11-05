@@ -4,7 +4,7 @@
     z-index: 100;
     background-color: var(--mainColor1);
     width: 500px;
-    height: 150px;
+    padding-bottom: 40px;
     margin-left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -16,6 +16,14 @@
 #eingabeContainerProjekte>p{
     align-self: flex-start;
     margin-left: 50px;
+}
+
+.warnmeldung{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    display: none;
 }
 
 #eingabeContainerProjekte>input{
