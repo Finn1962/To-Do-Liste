@@ -101,7 +101,7 @@ document.getElementById("projektÜbernehmenBtn").addEventListener("click", () =>
 
 //Eingabefläche Eingabefläche für Löschenüberprüfung Anzeigen
 document.addEventListener("buttonProjektLöschenGeklickt", (event) => {
-    eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungAnzeigen()
+    eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungAnzeigenProjekte()
     titelProjekt = event.detail;
 });
 
@@ -176,13 +176,21 @@ document.getElementById("aufgabenÜbernehmenBtn").addEventListener("click", ()=>
     speicher.speichern();
 });
 
+
 //Aufgaben Löschen
 
-//Aufgabe Löschen bei Click auf Button
-document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {
+//Eingabefläche Eingabefläche für Löschenüberprüfung Anzeigen
+document.addEventListener("buttonAufgabeLöschenGeklickt", (event) => {    
+    eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungAnzeigenAufgaben()
     titelAufgabe = event.detail;
+});
+
+
+//Aufgabe Löschen bei Click auf ja Button
+document.getElementById("jaBtn2").addEventListener("click", () => {    
     nutzerProjekteBearbeiten.aufgabeLöschen(titelAufgabe, titelProjekt);
     domManipulation.aufgabenInDomÜbernehmen(titelProjekt);
+    eingabeContainerAnzeigen.eingabeContainerLöschenÜberprüfungVerbergen()
     speicher.speichern();
 });
 

@@ -76,7 +76,21 @@ export class eingabeContainerAnzeigen {
         document.getElementById("warnmeldungAufgaben2").style.display = "block";
     }
 
-    static eingabeContainerLöschenÜberprüfungAnzeigen() {
+    static eingabeContainerLöschenÜberprüfungAnzeigenProjekte() {
+        const text = document.getElementById("textEingabecontainer")
+        text.textContent = "Das Projekt wirklich Löschen?";
+        document.getElementById("jaBtn").style.display = "block"
+        document.getElementById("jaBtn2").style.display = "none"
+        document.getElementById("eingabeContainerLöschenÜberprüfung").style.visibility = "visible";
+        overlay.style.visibility = "visible";        
+    }
+
+    static eingabeContainerLöschenÜberprüfungAnzeigenAufgaben() {
+        const text = document.getElementById("textEingabecontainer")
+        text.textContent = "Das Projekt wirklich Löschen?";
+        document.getElementById("textEingabecontainer").textContent = "Die Aufgabe wirklich Löschen?";
+        document.getElementById("jaBtn2").style.display = "block"
+        document.getElementById("jaBtn").style.display = "none"
         document.getElementById("eingabeContainerLöschenÜberprüfung").style.visibility = "visible";
         overlay.style.visibility = "visible";        
     }
