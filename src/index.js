@@ -6,7 +6,7 @@ import "./css/overlay.css"
 import "./css/eingabeContainerLöschenÜberprüfung.css"
 import "./css/eingabeContainerAufgaben.css"
 import "./css/header.css"
-import {nutzerProjekteBearbeiten} from "./index_/nutzerprojekteBearbeiten"
+import { nutzerProjekteBearbeiten } from "./index_/nutzerprojekteBearbeiten";
 import {eingabeContainerAnzeigen} from "./index_/eingabeContainerAnzeigen"
 import {domManipulation} from "./index_/domManipulation"
 import {speicher} from "./nutzerProjekte"

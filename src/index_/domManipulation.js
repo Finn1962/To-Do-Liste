@@ -68,6 +68,15 @@ export class domManipulation {
             if (!projekt.aufgaben[i].endtermin.uhrzeit) {
                 uhrzeit = "--"
             }
+            const datumHeute = new Date();
+            datumHeute.setHours(0, 0, 0, 0);
+            const datumAufgabe = new Date(projekt.aufgaben[i].endtermin.datum);
+            datumAufgabe.setHours(0, 0, 0, 0);
+            let farbeDatumUhrzeit = "black";
+            if ((datumHeute.getTime() == datumAufgabe.getTime()) || (datumHeute.getTime() > datumAufgabe.getTime())) farbeDatumUhrzeit = "red";
+            if (!projekt.aufgaben[i].endtermin.uhrzeit) {
+                uhrzeit = "--"
+            }
             const aufgabenDiv = document.createElement("div");
             aufgabenDiv.className = "aufgabe"
             aufgabenDiv.id = "aufgabe"+i;
@@ -81,8 +90,8 @@ export class domManipulation {
                     <p>Priorität: ${projekt.aufgaben[i].priorität}</p>
                     <div class="trennbalken"></div>
                     <div style="display: flex; flex-direction: column; justify-content: end;">
-                        <p class="datum" style="text-align: right;">${uhrzeit}</p>
-                        <p class="datum">${datumDeutsch}</p>
+                        <p class="datum" style="text-align: right; color:${farbeDatumUhrzeit};">${uhrzeit}</p>
+                        <p class="datum" style="color:${farbeDatumUhrzeit};">${datumDeutsch}</p>
                     </div>
                     <div class="trennbalken"></div>
                 </div>`

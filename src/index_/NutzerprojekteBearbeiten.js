@@ -101,25 +101,47 @@ export class nutzerProjekteBearbeiten {
         }
     }
 
-    static aufgabenNachWichtigkeitSortieren(){
+    static aufgabenNachWichtigkeitSortieren() {
         const prioritätRang = {
             "Hoch": 3,
             "Mittel": 2,
             "Niedrig": 1,
-        }
+        };
+
         for (let i = 0; i < nutzerProjekte.length; i++){
-            nutzerProjekte[i].aufgaben.sort((a, b) => prioritätRang[b.priorität] - prioritätRang[a.priorität]);
+            const aufgabe = nutzerProjekte[i].aufgaben;
+            aufgabe.sort((a, b) => {
+                const prioDiff = prioritätRang[b.priorität] - prioritätRang[a.priorität]
+                if (prioDiff !== 0) return prioDiff;
+                
+                const datumStringA = a.endtermin.datum;
+                const datumStringB = b.endtermin.datum;
+
+                    if (datumStringA === "" && datumStringB !== "") return 1;
+                    if (datumStringB === "" && datumStringA !== "") return -1;  
+
+                if (!(datumStringA === "" && datumStringB === "")) {
+                    const datumA = new Date (a.endtermin.datum);
+                    const datumB = new Date (b.endtermin.datum);
+                    const datumDiff = datumA - datumB;
+                    if (datumDiff !== 0) return datumDiff;
+                }
+
+                const zeitA = a.endtermin.uhrzeit;
+                const zeitB = b.endtermin.uhrzeit;
+                return zeitA.localeCompare(zeitB);
+            });
         }
     }
     
     static beispielprojektErstellen(){
-        const neuesProjekt = new projekt("Mein Beispielprojekt");
+        const neuesProjekt = new projekt("Beispielprojekt");
         nutzerProjekte.push(neuesProjekt);
-        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich muss etwas erledigen.", {datum: '2026-02-12', uhrzeit: '10:00'}, "Hoch");
+        const aufgabe_1 = new aufgabe("Aufgabe 1", "Ich muss etwas erledigen.", {datum: '2026-02-12', uhrzeit: '10:00'}, "Mittel");
         neuesProjekt.aufgaben.push(aufgabe_1);
-        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich muss etwas erledigen.", {datum: '2026-07-18', uhrzeit: '12:30'}, "Mittel");
+        const aufgabe_2 = new aufgabe("Aufgabe 2", "Ich muss etwas erledigen.", {datum: '2026-07-18', uhrzeit: '12:30'}, "Hoch");
         neuesProjekt.aufgaben.push(aufgabe_2);
-        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich muss etwas erledigen.", {datum: '2026-010-02', uhrzeit: '18:00'}, "Niedrig");
+        const aufgabe_3 = new aufgabe("Aufgabe 3", "Ich muss etwas erledigen.", {datum: '2026-10-02', uhrzeit: '18:00'}, "Niedrig");
         neuesProjekt.aufgaben.push(aufgabe_3);
     }
 
